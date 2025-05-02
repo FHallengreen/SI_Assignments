@@ -1,0 +1,7 @@
+cffi==1.17.1
+cryptography==44.0.2
+dnspython==2.7.0
+pycparser==2.22
+pymongo==4.12.1
+PyMySQL==1.1.1
+python-dotenv==1.1.0
