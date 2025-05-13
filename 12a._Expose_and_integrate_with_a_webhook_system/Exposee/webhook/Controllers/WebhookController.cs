@@ -14,15 +14,18 @@ public class WebhookController(AppDbContext context, IHttpClientFactory httpClie
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] WebhookRegistrationRequest request)
     {
-        if (string.IsNullOrEmpty(request.CallbackUrl) || string.IsNullOrEmpty(request.EventType) || string.IsNullOrEmpty(request.SecretKey))
+        if (string.IsNullOrEmpty(request.CallbackUrl) || string.IsNullOrEmpty(request.EventType) ||
+            string.IsNullOrEmpty(request.SecretKey))
         {
             return BadRequest("All fields are required.");
         }
 
-        var supportedEvents = new List<string> { "payment_initiated", "payment_processed", "payment_failed", "payment_refunded" };
+        var supportedEvents = new List<string>
+            { "payment_initiated", "payment_processed", "payment_failed", "payment_refunded" };
         if (!supportedEvents.Contains(request.EventType))
         {
-            return BadRequest("Invalid EventType. Supported: payment_initiated, payment_processed, payment_failed, payment_refunded.");
+            return BadRequest(
+                "Invalid EventType. Supported: payment_initiated, payment_processed, payment_failed, payment_refunded.");
         }
 
         var existing = await context.Webhooks

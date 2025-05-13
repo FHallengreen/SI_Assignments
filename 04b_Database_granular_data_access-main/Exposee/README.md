@@ -89,7 +89,7 @@ I deployed PostgreSQL using Docker on my local machine (Windows) and exposed it 
    INTEGRATOR_PASSWORD=integrator_pass
    ```
 3. **Created `docker-compose.yml`**:
-   Defined the PostgreSQL service (see configuration below). No additional config files like `postgresql.conf` or `pg_hba.conf` were needed, as the default settings sufficed with the initialization script.
+   Defined the PostgreSQL service (see configuration below).
 4. **Created Initialization Script**:
    - `init-db.sql`: Defined schema, data, and access controls (see below).
 5. **Started the Container**:
@@ -110,8 +110,6 @@ I deployed PostgreSQL using Docker on my local machine (Windows) and exposed it 
 #### Docker Compose Configuration
 The `docker-compose.yml` defines the PostgreSQL service:
 ```yaml
-version: '3.8'
-
 services:
   postgres:
     image: postgres:latest
