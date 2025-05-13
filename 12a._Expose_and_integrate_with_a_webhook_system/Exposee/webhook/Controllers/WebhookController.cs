@@ -9,17 +9,8 @@ namespace webhook.Controllers;
 
 [Route("api/webhooks")]
 [ApiController]
-public class WebhookController : ControllerBase
+public class WebhookController(AppDbContext context, IHttpClientFactory httpClientFactory) : ControllerBase
 {
-    private readonly AppDbContext _context;
-    private readonly IHttpClientFactory _httpClientFactory;
-
-    public WebhookController(AppDbContext context, IHttpClientFactory httpClientFactory)
-    {
-        _context = context;
-        _httpClientFactory = httpClientFactory;
-    }
-
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] WebhookRegistrationRequest request)
     {
@@ -34,7 +25,7 @@ public class WebhookController : ControllerBase
             return BadRequest("Invalid EventType. Supported: payment_initiated, payment_processed, payment_failed, payment_refunded.");
         }
 
-        var existing = await _context.Webhooks
+        var existing = await context.Webhooks
             .FirstOrDefaultAsync(w => w.CallbackUrl == request.CallbackUrl && w.EventType == request.EventType);
         if (existing != null)
         {
@@ -48,8 +39,8 @@ public class WebhookController : ControllerBase
             SecretKey = request.SecretKey
         };
 
-        _context.Webhooks.Add(webhook);
-        await _context.SaveChangesAsync();
+        context.Webhooks.Add(webhook);
+        await context.SaveChangesAsync();
 
         return Ok(new { Message = "Webhook registered successfully." });
     }
@@ -62,15 +53,15 @@ public class WebhookController : ControllerBase
             return BadRequest("CallbackUrl and EventType are required.");
         }
 
-        var webhook = await _context.Webhooks
+        var webhook = await context.Webhooks
             .FirstOrDefaultAsync(w => w.CallbackUrl == request.CallbackUrl && w.EventType == request.EventType);
         if (webhook == null)
         {
             return NotFound("Webhook not found.");
         }
 
-        _context.Webhooks.Remove(webhook);
-        await _context.SaveChangesAsync();
+        context.Webhooks.Remove(webhook);
+        await context.SaveChangesAsync();
 
         return Ok(new { Message = "Webhook unregistered successfully." });
     }
@@ -78,8 +69,8 @@ public class WebhookController : ControllerBase
     [HttpPost("ping")]
     public async Task<IActionResult> Ping()
     {
-        var webhooks = await _context.Webhooks.ToListAsync();
-        var httpClient = _httpClientFactory.CreateClient();
+        var webhooks = await context.Webhooks.ToListAsync();
+        var httpClient = httpClientFactory.CreateClient();
         var tasks = new List<Task>();
 
         foreach (var webhook in webhooks)
