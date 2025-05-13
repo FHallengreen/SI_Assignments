@@ -38,3 +38,15 @@ The webhook system is themed around payment processing, with the following event
     "eventType": "payment_processed",
     "secretKey": "my_secret_key"
   }
+
+### Do following:
+1. Go to webhook.site and create a new URL.
+2. Open swagger UI at `<ngrok-url>/swagger`.
+3. Copy the URL and paste it into the `callbackUrl` field in the request body.
+4. Choose an event type from the list of available event types.
+5. Generate a secret key using a secure method (e.g., UUID, random string).
+6. Paste the secret key into the `secretKey` field in the request body.
+7. Send the request to register the webhook.
+8. Check the response to confirm successful registration.
+9. Try creating a payment event to test the webhook. ("/api/payments"). you can also try the "/ping" endpoint to test the webhook.
+10. Check the webhook.site URL to see if you received the notification.
