@@ -6,7 +6,7 @@
 - **04b** <Pair> Database Granular Access: [Database Granular Data Access](./04b_Database_granular_data_access-main)
 - **06a** Websocket Example: [Websocket Example](./06a_Websocket_Example)
 - **08a** WebRTC Example: [WebRTC Example](./08a_WebRTC_Example)
-https://github.com/adrnl1ne/DLS_Banking_App/tree/main/docs)
+- **08b** Generate code documentation for your DLS project: [Documentation](https://github.com/adrnl1ne/DLS_Banking_App/tree/main/docs/UserAccountService)
 - **10a** Document A Database [Document Database](./10a_Document_A_Database)
 - **10b** Migrate From One Database To Another [Migrate to Database](./10b_Migrate_From_One_Database_To_Another)
 - **11a** Auth Integration [Auth Integration](./11a_Auth_Integration)

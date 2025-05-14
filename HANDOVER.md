@@ -1,0 +1,15 @@
+## Assignment List
+
+- **01a** <Individual> Data Parsing Servers - Part I: [Data Parsing Servers Part I](https://github.com/FHallengreen/SI_Assignments/tree/main/01a_03a_Data_parsing_servers_Part_I)
+- **03a** <Individual> Data Parsing Servers - Part III: [Data Parsing Servers Part I](https://github.com/FHallengreen/SI_Assignments/tree/main/01a_03a_Data_parsing_servers_Part_I)
+- **04a** <Individual> SSE Example: [SSE Example](https://github.com/FHallengreen/SI_Assignments/tree/main/04a_SSE_Example)
+- **04b** <Pair> Database Granular Access: [Database Granular Data Access](https://github.com/FHallengreen/SI_Assignments/tree/main/04b_Database_granular_data_access-main)
+- **06a** Websocket Example: [Websocket Example](https://github.com/FHallengreen/SI_Assignments/tree/main/06a_Websocket_Example)
+- **08a** WebRTC Example: [WebRTC Example](https://github.com/FHallengreen/SI_Assignments/tree/main/08a_WebRTC_Example)
+- **08b** Generate code documentation for your DLS project: [Documentation](https://github.com/adrnl1ne/DLS_Banking_App/tree/main/docs/UserAccountService)
+- **10a** Document A Database: [Document Database](https://github.com/FHallengreen/SI_Assignments/tree/main/10a_Document_A_Database)
+- **10b** Migrate From One Database To Another: [Migrate to Database](https://github.com/FHallengreen/SI_Assignments/tree/main/10b_Migrate_From_One_Database_To_Another)
+- **11a** Auth Integration: [Auth Integration](https://github.com/FHallengreen/SI_Assignments/tree/main/11a_Auth_Integration)
+- **11b** Integrate with Payment Gateway: [Payment Stripe](https://github.com/FHallengreen/SI_Assignments/tree/main/11b_Integrate_with_payment)
+- **12a** <Pair> Expose and Integrate with a Webhook System: [Expose and Integrate with a Webhook System](https://github.com/FHallengreen/SI_Assignments/tree/main/12a._Expose_and_integrate_with_a_webhook_system)
+- **13a** GraphQL: [GraphQL](https://github.com/FHallengreen/SI_Assignments/tree/main/13a_GraphQL)
