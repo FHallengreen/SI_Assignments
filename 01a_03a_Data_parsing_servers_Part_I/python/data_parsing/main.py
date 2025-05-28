@@ -52,7 +52,6 @@ class FileReader:
         full_path = os.path.join(self.base_path, "product.json")
         with open(full_path, "r") as file:
             data = json.load(file)
-            # Normalize to snake_case if needed
             return [
                 {
                     "id": int(item["id"]),
@@ -67,7 +66,7 @@ class FileReader:
         tree = ET.parse(full_path)
         root = tree.getroot()
         products = []
-        for product in root.findall("Product"):  # Match case from XML
+        for product in root.findall("Product"):
             products.append({
                 "id": int(product.find("id").text),
                 "name": product.find("name").text,
