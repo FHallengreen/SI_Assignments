@@ -1,27 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
 
-    <div id="videos">
-      <video id="localVideo"></video>
-      <video id="remoteVideo"></video>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
 
-    <button id="createOfferButton">Create Offer</button>
-    <label>SDP Offer</label>
-    <textarea id="sdpOfferTextArea"></textarea>
+<body>
 
-    <button id="createAnswerButton">Create Answer</button>
-    <label>SDP Answer</label>
-    <textarea id="sdpAnswerTextArea"></textarea>
+  <div id="videos">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
 
-    <button id="addAnswerButton">Add Answer</button>
+  <button id="createOfferButton">Create Offer</button>
+  <label>SDP Offer</label>
+  <textarea id="sdpOfferTextArea"></textarea>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+  <button id="createAnswerButton">Create Answer</button>
+  <label>SDP Answer</label>
+  <textarea id="sdpAnswerTextArea"></textarea>
+
+  <button id="addAnswerButton">Add Answer</button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

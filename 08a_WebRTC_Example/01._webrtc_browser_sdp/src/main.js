@@ -45,9 +45,9 @@ async function createOffer() {
   }
 
   const offer = await createPeerConnection("sdpOfferTextArea");
-
-  // tells WebRTC that a peer wants to start a connection which triggers the ICE candidate gathering for itself
   await peerConnection.setLocalDescription(offer);
+
+
 
 }
 
