@@ -9,7 +9,7 @@ public class Program
         if (args.Length == 0)
         {
             Console.WriteLine("Usage: dotnet run <format>");
-            Console.WriteLine("Supported formats: json, xml, yaml, csv, text");
+            Console.WriteLine("Supported formats: json, xml, yaml, csv, txt");
             return;
         }
 
@@ -29,7 +29,7 @@ public class Program
             "xml" => DataParsingService.ParseXml(filePath),
             "yaml" => DataParsingService.ParseYaml(filePath),
             "csv" => DataParsingService.ParseCsv(filePath),
-            "text" => DataParsingService.ParseText(filePath),
+            "txt" => DataParsingService.ParseText(filePath),
             _ => throw new InvalidOperationException($"Unexpected format: {format}")
         };
 

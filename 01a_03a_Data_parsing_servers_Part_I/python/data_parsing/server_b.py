@@ -16,7 +16,7 @@ class Product(BaseModel):
 
 @app.get("/txt", response_model=List[Product])
 def get_txt():
-    response = requests.get(f"{SERVER_A_URL}/local/text")
+    response = requests.get(f"{SERVER_A_URL}/local/txt")
     response.raise_for_status()
     return response.json()
 
@@ -46,22 +46,27 @@ def get_yaml():
 
 @app.get("/local/txt", response_model=List[Product])
 def get_local_txt():
+    print("Hello from Python")
     return reader.read_txt()
 
 @app.get("/local/csv", response_model=List[Product])
 def get_local_csv():
+    print("Hello from Python")
     return reader.read_csv()
 
 @app.get("/local/json", response_model=List[Product])
 def get_local_json():
+    print("Hello from Python")
     return reader.read_json()
 
 @app.get("/local/xml", response_model=List[Product])
 def get_local_xml():
+    print("Hello from Python")
     return reader.read_xml()
 
 @app.get("/local/yaml", response_model=List[Product])
 def get_local_yaml():
+    print("Hello from Python")
     return reader.read_yaml()
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ public static class DataParsingService
 {
     public static List<Product> ParseJson(string filePath)
     {
+        System.Console.WriteLine("Hello From C# server");
         var json = File.ReadAllText(filePath);
         var products = ((JsonArray)JsonNode.Parse(json)!)
             .Select(p => new Product
@@ -26,6 +27,7 @@ public static class DataParsingService
 
     public static List<Product> ParseXml(string filePath)
     {
+        System.Console.WriteLine("Hello From C# server");
         var doc = XDocument.Load(filePath);
         var products = doc.Descendants("Product")
             .Select(p => new Product
@@ -40,6 +42,7 @@ public static class DataParsingService
 
     public static List<Product> ParseYaml(string filePath)
     {
+        System.Console.WriteLine("Hello From C# server");
         var deserializer = new DeserializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
             .Build();
@@ -52,6 +55,7 @@ public static class DataParsingService
 
     public static List<Product> ParseCsv(string filePath)
     {
+        System.Console.WriteLine("Hello From C# server");
         var lines = File.ReadAllLines(filePath);
         var products = lines.Skip(1)
             .Select(line =>
@@ -71,6 +75,7 @@ public static class DataParsingService
 
     public static List<Product> ParseText(string filePath)
     {
+        System.Console.WriteLine("Hello From C# server");
         var lines = File.ReadAllLines(filePath);
         var products = new List<Product>();
         Product currentProduct = null;
