@@ -19,11 +19,11 @@ ALTER TABLE developers ENABLE ROW LEVEL SECURITY;
 CREATE USER integrator WITH PASSWORD 'integrator_pass';
 
 -- Define RLS policies on the table
--- Allow SELECT for manager, developer, and intern rows
-CREATE POLICY read_all ON developers
+-- Allow SELECT for manager and developer rows ONLY (exclude intern)
+CREATE POLICY read_limited ON developers
 FOR SELECT
 TO integrator
-USING (role IN ('manager', 'developer', 'intern'));
+USING (role IN ('manager', 'developer'));
 
 -- Allow UPDATE for developer rows
 CREATE POLICY rw_developer_update ON developers
@@ -32,7 +32,6 @@ TO integrator
 USING (role = 'developer')
 WITH CHECK (role = 'developer');
 
--- Create a view with conditional salary column
 CREATE VIEW developers_view AS
 SELECT 
     id,
@@ -44,7 +43,5 @@ SELECT
     role
 FROM developers;
 
--- Grant permissions to integrator
 GRANT SELECT ON developers_view TO integrator;
-GRANT SELECT ON developers TO integrator;
 GRANT UPDATE (name, role) ON developers TO integrator;

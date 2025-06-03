@@ -164,6 +164,10 @@ CREATE TABLE developers (
 
 ### 4. Access Levels
 Using RLS and a view, I configured the following access controls for the `integrator` user:
+- **Cannot Read**:
+  - Rows where `role = 'intern'` (Charlie, `id=3`).
+  - The `read_limited` RLS policy excludes `'intern'` rows entirely.
+  - Example: Charlie's entire row is inaccessible - you cannot see his name, salary, or role.
 - **Can Read and Write**:
   - Rows where `role = 'developer'` (Bob, `id=2`).
   - Columns: `name` and `role` (no write access to `salary`).

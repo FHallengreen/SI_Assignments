@@ -11,7 +11,7 @@ public static class DataParsingService
 {
     public static List<Product> ParseJson(string filePath)
     {
-        System.Console.WriteLine("Hello From C# server");
+        Console.WriteLine("Hello From C# server");
         var json = File.ReadAllText(filePath);
         var products = ((JsonArray)JsonNode.Parse(json)!)
             .Select(p => new Product
@@ -27,7 +27,7 @@ public static class DataParsingService
 
     public static List<Product> ParseXml(string filePath)
     {
-        System.Console.WriteLine("Hello From C# server");
+        Console.WriteLine("Hello From C# server");
         var doc = XDocument.Load(filePath);
         var products = doc.Descendants("Product")
             .Select(p => new Product
@@ -42,7 +42,7 @@ public static class DataParsingService
 
     public static List<Product> ParseYaml(string filePath)
     {
-        System.Console.WriteLine("Hello From C# server");
+        Console.WriteLine("Hello From C# server");
         var deserializer = new DeserializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
             .Build();
@@ -55,27 +55,31 @@ public static class DataParsingService
 
     public static List<Product> ParseCsv(string filePath)
     {
-        System.Console.WriteLine("Hello From C# server");
-        var lines = File.ReadAllLines(filePath);
-        var products = lines.Skip(1)
-            .Select(line =>
+        Console.WriteLine("Hello From C# server");
+        using var reader = new StringReader(File.ReadAllText(filePath));
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        
+        var products = new List<Product>();
+        csv.Read();
+        csv.ReadHeader();
+        
+        while (csv.Read())
+        {
+            var product = new Product
             {
-                var parts = line.Split(',');
-                return new Product
-                {
-                    Id = int.TryParse(parts[0], out var id) ? id : 0,
-                    Name = parts[1],
-                    Price = double.TryParse(parts[2], out var price) ? price : 0.0,
-                };
-            })
-            .ToList();
-
+                Id = csv.GetField<int>("id"),
+                Name = csv.GetField<string>("name") ?? "Unknown",
+                Price = csv.GetField<double>("price")
+            };
+            products.Add(product);
+        }
+        
         return products;
     }
 
     public static List<Product> ParseText(string filePath)
     {
-        System.Console.WriteLine("Hello From C# server");
+        Console.WriteLine("Hello From C# server");
         var lines = File.ReadAllLines(filePath);
         var products = new List<Product>();
         Product currentProduct = null;
