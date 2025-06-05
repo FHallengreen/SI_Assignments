@@ -12,13 +12,6 @@ The API is exposed publicly via Ngrok at:
 - **Swagger UI**: Access the interactive API documentation at `<ngrok-url>/swagger`.
 - **Note**: The Ngrok URL is temporary and may change. Contact the Exposee for the current URL during testing.
 
-## Prerequisites for Integrator
-- A tool to send HTTP requests (e.g., Postman, curl, or Swagger UI).
-- A callback URL to receive webhook payloads:
-  - Use [webhook.site](https://webhook.site/) to get a free, temporary URL (recommended for testing).
-  - Alternatively, set up your own public server to receive HTTP POST requests.
-- An internet connection to access the Ngrok URL and webhook.site.
-
 ## Theme
 The webhook system is themed around payment processing, with the following event types:
 - `payment_initiated`: A payment has been created.

@@ -17,7 +17,7 @@
                 const response = await fetch('/api/payment/create-payment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: 'test@example.com', amount: 10.00 })
+                    body: JSON.stringify({ email: 'fred70p9@stud.kea.dk', amount: 10.00 })
                 });
                 if (!response.ok) {
                     throw new Error(`Failed to create payment: ${response.status}`);
